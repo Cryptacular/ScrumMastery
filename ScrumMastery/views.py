@@ -2,17 +2,15 @@ from datetime import datetime
 from flask import render_template, url_for, request, redirect, flash
 
 from ScrumMastery import app
+from manage import db
+from models import User
 from forms import CreateAccountForm
-
-accounts = []
 
 
 def create_new_account(email, password):
-    accounts.append(dict(
-        email = email,
-        password = password,
-        created = datetime.utcnow()
-    ))
+    user = User(email=email, password=password)
+    db.session.add(user)
+    db.session.commit()
     return
 
 
