@@ -18,6 +18,17 @@
     </head>
     <body>
         <section class="sm-page-container">
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <div class="sm-flashes">
+                        <ul>
+                            {% for message in messages %}
+                                <li class="sm-flashes-message">{{ message }}</li>
+                            {% endfor %}
+                        </ul>
+                    </div>
+                {% endif %}
+            {% endwith %}
             {% block introduction %}
                 <h1>{{ heading }}</h1>
                 {% for paragraph in introduction %}

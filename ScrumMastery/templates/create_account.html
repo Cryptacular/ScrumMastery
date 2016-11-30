@@ -1,9 +1,10 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-<form action="" method="post">
-    <input type="email" name="email" placeholder="Email Address" />
-    <input type="password" name="password" placeholder="Password" />
-    <button type="submit">Create Account</button>
-</form>
+    <form action="" method="post">
+        {{ form.hidden_tag() }}
+        {{ form.email(placeholder='Email Address') }}
+        {{ form.password(placeholder='Password') }}
+        <button type="submit">Create Account</button>
+    </form>
 {% endblock %}

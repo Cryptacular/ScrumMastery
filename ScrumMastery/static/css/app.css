@@ -4,3 +4,8 @@
     padding: 4em;
     width: 80em;
 }
+
+.sm-flashes {
+    background: #333;
+    color: #eee;
+}

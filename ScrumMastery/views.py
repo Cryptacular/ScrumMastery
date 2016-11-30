@@ -1,8 +1,10 @@
 from datetime import datetime
-from flask import render_template, url_for, request, redirect
+from flask import render_template, url_for, request, redirect, flash
 
 from ScrumMastery import app
+from forms import CreateAccountForm
 
+app.config['SECRET_KEY'] = '\xcf3\xc3f\xda\x14\xf7)\xf1p\x10t\xc2}\xdb\x91dF%\xbe\xe9t\x89\x03'
 accounts = []
 
 
@@ -28,13 +30,16 @@ def index():
 
 @app.route('/create-account', methods=['GET', 'POST'])
 def create_account():
-    if request.method == "POST":
-        email = request.form['email']
-        password = request.form['password']
+    form = CreateAccountForm()
+    if form.validate_on_submit():
+        email = form.email.data
+        password = form.password.data
         create_new_account(email, password)
+        flash("Account for {} created, please log in!".format(email))
         return redirect(url_for('index'))
 
     return render_template('create_account.html',
+                           form=form,
                            title="Create Account",
                            heading="Create an Account",
                            introduction=["Create an account and be like brah, yo.", accounts])
