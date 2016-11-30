@@ -4,7 +4,6 @@ from flask import render_template, url_for, request, redirect, flash
 from ScrumMastery import app
 from forms import CreateAccountForm
 
-app.config['SECRET_KEY'] = '\xcf3\xc3f\xda\x14\xf7)\xf1p\x10t\xc2}\xdb\x91dF%\xbe\xe9t\x89\x03'
 accounts = []
 
 

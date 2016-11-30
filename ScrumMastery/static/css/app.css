@@ -9,3 +9,8 @@
     background: #333;
     color: #eee;
 }
+
+.sm-form-errors {
+    background: red;
+    color: white;
+}

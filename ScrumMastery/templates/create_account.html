@@ -1,10 +1,18 @@
 {% extends 'layout.html' %}
 
 {% block content %}
-    <form action="" method="post">
+    <form action="" method="post" class="sm-form">
+        <div class="sm-form-errors">
+            {% if form.email.errors %}
+                <p>Please enter a valid email address.</p>
+            {% endif %}
+            {% if form.password.errors %}
+                <p>Please enter a valid password.</p>
+            {% endif %}
+        </div>
         {{ form.hidden_tag() }}
-        {{ form.email(placeholder='Email Address') }}
-        {{ form.password(placeholder='Password') }}
+        {{ form.email(placeholder='Email Address', class="sm-form-email") }}
+        {{ form.password(placeholder='Password', class="sm-form-password") }}
         <button type="submit">Create Account</button>
     </form>
 {% endblock %}
